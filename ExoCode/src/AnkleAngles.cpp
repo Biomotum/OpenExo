@@ -30,14 +30,12 @@ float AnkleAngles::get(bool is_left, bool return_normalized)
 		init(is_left);
         return 0;
     }
-    
     //Convert ADC counts to ratio
     const int adc_counts = _left ? analogRead(_left_pin):analogRead(_right_pin);
 	const float ratio = adc_counts / 4095.0f;
     if (!return_normalized) {
         return ratio;
     }
-
     const float calibrated_ratio = _update_population_statistics(ratio);
     return calibrated_ratio;
 }

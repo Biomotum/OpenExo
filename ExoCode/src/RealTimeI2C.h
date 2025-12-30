@@ -10,7 +10,7 @@ namespace rt_data
     static int BILATERAL_ELBOW_RT_LEN = 11;
     static int BILATERAL_HIP_ELBOW_RT_LEN = 11;
     static int BILATERAL_ANKLE_ELBOW_RT_LEN = 11;
-    static const uint8_t len = BILATERAL_HIP_ANKLE_RT_LEN;
+    static const uint8_t len = BILATERAL_ANKLE_RT_LEN;
     static float* float_values = new float(len);
 
     static bool new_rt_msg = false;

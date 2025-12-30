@@ -66,8 +66,8 @@ bool ExoBLE::setup()
     const char *device_pointer = device_char;
 
     //Set name for device
-    BLE.setLocalName(k_name_pointer);
-    BLE.setDeviceName(k_name_pointer);
+    BLE.setLocalName(device_pointer);
+    BLE.setDeviceName(device_pointer);
 
     //Initialize GATT DB
     _gatt_db.FirmwareChar.writeValue(firmware_char);

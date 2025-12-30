@@ -85,22 +85,22 @@ class TopPlot(BasePlot):
         top_limit = 1
         if chart_selection == "Data 0-3":
             top_controller = (
-                self.master.controller.deviceManager._realTimeProcessor._chart_data.data0
-            )
-            top_measure = (
-                self.master.controller.deviceManager._realTimeProcessor._chart_data.data1
-            )
-            title = "Data 0 and 1"
-        elif chart_selection == "Data 4-7":
-            top_controller = (
                 self.master.controller.deviceManager._realTimeProcessor._chart_data.data4
             )
             top_measure = (
-                self.master.controller.deviceManager._realTimeProcessor._chart_data.data5
+                self.master.controller.deviceManager._realTimeProcessor._chart_data.data7
             )
-            title = "Data 4 and 5"
+            title = "Left State vs FSR"
             bottom_limit = 0
             top_limit = 1.1
+        elif chart_selection == "Data 4-7":
+            top_controller = (
+                self.master.controller.deviceManager._realTimeProcessor._chart_data.data5
+            )
+            top_measure = (
+                self.master.controller.deviceManager._realTimeProcessor._chart_data.data3
+            )
+            title = "Left Setpoint vs Torque"
 
         if top_controller is None or top_measure is None:
             top_controller = 0
@@ -124,22 +124,22 @@ class BottomPlot(BasePlot):
         top_limit = 1
         if chart_selection == "Data 0-3":
             top_controller = (
+                self.master.controller.deviceManager._realTimeProcessor._chart_data.data1
+            )
+            top_measure = (
+                self.master.controller.deviceManager._realTimeProcessor._chart_data.data6
+            )
+            title = "Right State vs FSR"
+            bottom_limit = 0
+            top_limit = 1.1
+        elif chart_selection == "Data 4-7":
+            top_controller = (
                 self.master.controller.deviceManager._realTimeProcessor._chart_data.data2
             )
             top_measure = (
-                self.master.controller.deviceManager._realTimeProcessor._chart_data.data3
+                self.master.controller.deviceManager._realTimeProcessor._chart_data.data0
             )
-            title = "Data 2 and 3"
-        elif chart_selection == "Data 4-7":
-            top_controller = (
-                self.master.controller.deviceManager._realTimeProcessor._chart_data.data6
-            )
-            top_measure = (
-                self.master.controller.deviceManager._realTimeProcessor._chart_data.data7
-            )
-            bottom_limit = 0
-            top_limit = 1.1
-            title = "Data 6 and 7"
+            title = "Right Setpoint vs Torque"
 
         if top_controller is None or top_measure is None:
             top_controller = 0

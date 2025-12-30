@@ -88,14 +88,14 @@ class RealTimeProcessor:
         self, payload, datalength
     ):  # Place general data derived from message to Exo data
         self.x_time += 1
-        data0 = payload[0] if len(payload) > 0 else 0  # rightTorque
-        data1 = payload[1] if len(payload) > 1 else 0  # rightState
-        data2 = payload[2] if len(payload) > 2 else 0  # rightSet
-        data3 = payload[3] if len(payload) > 3 else 0  # leftTorque
-        data4 = payload[4] if len(payload) > 4 else 0  # leftState
-        data5 = payload[5] if len(payload) > 5 else 0  # leftSet
+        data0 = payload[3] if len(payload) > 0 else 0  # rightTorque
+        data1 = payload[7] if len(payload) > 1 else 0  # rightState
+        data2 = (payload[2] / 100) if len(payload) > 2 else 0  # rightSet (extra /100 to fix scaling) FIX: added this as temporary fix to scaling issue
+        data3 = payload[1] if len(payload) > 3 else 0  # leftTorque
+        data4 = payload[5] if len(payload) > 4 else 0  # leftState
+        data5 = (payload[0] / 100) if len(payload) > 5 else 0  # leftSet (extra /100 to fix scaling) FIX: added this as temporary fix to scaling issue
         data6 = payload[6] if datalength >= 7 and len(payload) > 6 else 0  # rightFsr
-        data7 = payload[7] if datalength >= 8 and len(payload) > 7 else 0  # leftFsr
+        data7 = payload[4] if datalength >= 8 and len(payload) > 7 else 0  # leftFsr
         data8 = payload[8] if datalength >= 9 and len(payload) > 8 else 0  # minSV
         data9 = payload[9] if datalength >= 10 and len(payload) > 9 else 0  # maxSV
         data10 = payload[10] if datalength >= 11 and len(payload) > 10 else 0  # battery
